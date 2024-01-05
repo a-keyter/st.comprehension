@@ -33,11 +33,12 @@ with st.sidebar:
 st.title("AI Listening Comprehension")
 
 user_link = st.text_input("Enter a link to a YouTube Video")
-target_lang = st.selectbox("Select the original language of the video", ["English", "Spanish", "French", "German", "Italian", "Portuguese",])
+target_lang = st.selectbox("Select the original language of the video", ["English", "Spanish", "Spanish - LATAM", "French", "German", "Italian", "Portuguese",])
 
 lang_codes = {
     "English": "en",
     "Spanish": "es",
+    "Spanish - LATAM": "es-419",
     "French": "fr",
     "German": "de",
     "Italian": "it",
