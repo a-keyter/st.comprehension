@@ -23,14 +23,12 @@ from langchain.prompts.chat import (
 
 ############ STREAMLIT APP ##############
 
-with st.sidebar:
-    st.title("AI Listening Comprehension")
-    st.header("Turn YouTube Videos into Listening Comprehension Exercises")
-    st.write("Enter a link to a youtube video, to produce a listening comprehension worksheet")
-    st.divider()
-    user_openai = st.text_input("Please enter your OpenAI API Key:",)
-
-st.title("AI Listening Comprehension")
+st.title("AI Powered Comprehension Tasks")
+st.header("Turn YouTube Videos into Comprehension Exercises")
+st.write("This is a simple Generative AI application that turns YouTube Videos into learning resources in seconds!")
+st.write("This has been developed by Alex Keyter as a proof of concept, to give a small taste of how AI can support educators across the UK.")
+st.write("To find out more about Alex's Work - head to https://genminds.co.uk/ or connect with them on LinkedIn - https://www.linkedin.com/in/alex-keyter/")
+st.divider()
 
 user_link = st.text_input("Enter a link to a YouTube Video")
 target_lang = st.selectbox("Select the original language of the video", ["English", "Spanish", "Spanish - LATAM", "French", "German", "Italian", "Portuguese",])
@@ -47,14 +45,12 @@ lang_codes = {
 
 generate = st.button("Create Worksheet")
 
-if generate and user_openai == "":
-  st.error("You must enter an OpenAI API Key")
-elif generate and user_openai != "":
-  #Set API keys
-  os.environ['OPENAI_API_KEY'] = user_openai
-  chat_model = "gpt-4-1106-preview"
-  #Set Temp
-  temp = 0.7
+#Set API keys
+user_openai = st.secrets['OPENAI_API_KEY']
+chat_model = "gpt-4-turbo-preview"
+temp = 0.7
+os.environ['OPENAI_API_KEY'] = user_openai
+  
 
   def get_youtube_details(url):
       yt = YouTube(url)
